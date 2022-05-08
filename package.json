@@ -4,9 +4,9 @@
   "description": "Toy Robot Simulator",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./dist/cli.js",
+    "start": "tsc && node ./dist/cli/cli.js",
     "build": "tsc",
-    "test": "jest *test.ts --verbose",
+    "test": "jest ./*test.ts --verbose",
     "format": "prettier --write ."
   },
   "author": "Sandy Mann",

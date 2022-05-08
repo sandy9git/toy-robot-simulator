@@ -1,6 +1,6 @@
-import { left, move, place, report, right } from "./robotServices";
-import { Face, Robot } from "./robotTypes";
-import { Surface } from "./surfaceTypes";
+import { left, move, place, report, right } from "../robot/robotServices";
+import { Face, Robot } from "../robot/robotTypes";
+import { Surface } from "../robot/surfaceTypes";
 
 export enum Command {
   PLACE,

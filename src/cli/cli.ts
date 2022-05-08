@@ -1,8 +1,8 @@
 import * as process from "process";
 import { createInterface, ReadLineOptions } from "readline";
-import { Command, RobotApp } from "./robotApp";
-import { Face } from "./robotTypes";
-import { Coordinates, Surface } from "./surfaceTypes";
+import { Command, RobotApp } from "../app/robotApp";
+import { Face } from "../robot/robotTypes";
+import { Coordinates, Surface } from "../robot/surfaceTypes";
 
 const surface = new Surface("Table", new Coordinates(0, 0, 5, 5));
 const robotApp = new RobotApp(surface);

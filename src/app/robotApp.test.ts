@@ -1,9 +1,9 @@
 import { Command, RobotApp } from "./robotApp";
-import { Face } from "./robotTypes";
-import { Coordinates, Surface } from "./surfaceTypes";
-import { place, move, left, right, report } from "./robotServices";
+import { Face } from "../robot/robotTypes";
+import { Coordinates, Surface } from "../robot/surfaceTypes";
+import { place, move, left, right, report } from "../robot/robotServices";
 
-jest.mock("./robotServices");
+jest.mock("../robot/robotServices");
 
 const surface = new Surface("Table", new Coordinates(0, 0, 5, 5));
 
