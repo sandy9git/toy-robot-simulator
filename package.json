@@ -1,0 +1,21 @@
+{
+  "name": "toy-robot-simulator",
+  "version": "1.0.0",
+  "description": "Toy Robot Simulator",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node ./dist/cli.js",
+    "build": "tsc",
+    "test": "jest *test.ts --verbose",
+    "format": "prettier --write ."
+  },
+  "author": "Sandy Mann",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.5.0",
+    "jest": "^28.0.3",
+    "prettier": "2.6.2",
+    "ts-jest": "^28.0.1",
+    "typescript": "^4.6.4"
+  }
+}
