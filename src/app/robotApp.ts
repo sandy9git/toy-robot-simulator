@@ -26,7 +26,7 @@ export class RobotApp {
       case Command.PLACE:
         if (x === undefined || y === undefined || face === undefined) {
           throw new Error(
-            "x, y and face must be provioded when running place command"
+            "x, y and face must be provided when running place command"
           );
         } else {
           this.robot = place(x, y, face, this.surface);

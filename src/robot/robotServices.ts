@@ -99,7 +99,7 @@ const right = (robot: Robot): Robot => {
 
 const report = (robot: Robot) => {
   if (robot === undefined) {
-    return "Robot is not initalised";
+    return "Robot is not initialised";
   }
   return `Output: ${robot.position.x},${robot.position.y},${Face[robot.face]}`;
 };

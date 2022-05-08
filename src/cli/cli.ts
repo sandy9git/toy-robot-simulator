@@ -22,7 +22,7 @@ readLine.prompt(true);
 readLine.on("line", (line: string) => {
   if (line.includes("PLACE")) {
     let placeFormatMessage =
-      "PLACE command should have follwing format PLACE X,Y,FACE for example PLACE 0,0,NORTH";
+      "PLACE command should have following format PLACE X,Y,FACE for example PLACE 0,0,NORTH";
     let args = line.split(" ");
     if (args.length < 2) {
       process.stdout.write(placeFormatMessage);

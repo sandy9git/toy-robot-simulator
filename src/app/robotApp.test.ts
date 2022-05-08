@@ -24,7 +24,7 @@ describe("When robot is placed", () => {
       expect(() => {
         robotApp.runCommand(Command.PLACE, 0);
       }).toThrowError(
-        "x, y and face must be provioded when running place command"
+        "x, y and face must be provided when running place command"
       );
     });
   });
