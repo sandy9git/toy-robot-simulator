@@ -2,23 +2,22 @@ import { Face, Position, Robot } from "./robotTypes";
 import { Coordinates, Surface } from "./surfaceTypes";
 
 const validatePosition = (
-  x: number,
-  y: number,
+  position: Position,
   coordinates: Coordinates
 ): boolean => {
   return (
-    x >= coordinates.minX &&
-    x <= coordinates.maxX &&
-    y >= coordinates.minY &&
-    y <= coordinates.maxY
+    position.x >= coordinates.minX &&
+    position.x <= coordinates.maxX &&
+    position.y >= coordinates.minY &&
+    position.y <= coordinates.maxY
   );
 };
 
 const place = (x: number, y: number, face: Face, surface: Surface): Robot => {
-  if (!validatePosition(x, y, surface.coordinates)) {
+  let position = new Position(x, y);
+  if (!validatePosition(position, surface.coordinates)) {
     throw new Error("invalid placement");
   }
-  let position = new Position(x, y);
   return new Robot(position, face);
 };
 
@@ -41,7 +40,7 @@ const move = (robot: Robot, surface: Surface): Robot => {
       newPosition = new Position(robot.position.x - 1, robot.position.y);
       break;
   }
-  if (!validatePosition(newPosition.x, newPosition.y, surface.coordinates)) {
+  if (!validatePosition(newPosition, surface.coordinates)) {
     console.log(
       `cannot move further, robot is at the edge of the ${surface.name}`
     );
