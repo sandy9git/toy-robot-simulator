@@ -1,6 +1,6 @@
 import * as process from "process";
 import { createInterface, ReadLineOptions } from "readline";
-import { Command, RobotApp } from "../app/robotApp";
+import { CommandName, RobotApp } from "../app/robotApp";
 import { Face } from "../robot/robotTypes";
 import { Coordinates, Surface } from "../robot/surfaceTypes";
 
@@ -39,13 +39,25 @@ readLine.on("line", (line: string) => {
     let y = parseInt(placeAgrs[1]);
     let face: Face = (<any>Face)[placeAgrs[2]];
     try {
-      robotApp.runCommand(Command.PLACE, x, y, face);
+      robotApp.runCommand({ command: CommandName.PLACE, x:x, y:y, face: face });
     } catch (error) {
       console.log(error);
     }
   } else {
-    let command: Command = (<any>Command)[line.trim()];
-    robotApp.runCommand(command);
+    switch (line) {
+      case "LEFT":
+        robotApp.runCommand({ command: CommandName.LEFT});
+        break;
+      case "RIGHT":
+        robotApp.runCommand({ command: CommandName.RIGHT});
+        break;
+      case "MOVE":
+        robotApp.runCommand({ command: CommandName.MOVE});
+        break;
+      case "REPORT":
+        robotApp.runCommand({ command: CommandName.REPORT});
+        break;
+    }
   }
   readLine.prompt(true);
 });

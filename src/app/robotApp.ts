@@ -2,13 +2,43 @@ import { left, move, place, report, right } from "../robot/robotServices";
 import { Face, Robot } from "../robot/robotTypes";
 import { Surface } from "../robot/surfaceTypes";
 
-export enum Command {
+export enum CommandName {
   PLACE,
   MOVE,
   LEFT,
   RIGHT,
   REPORT,
 }
+
+export type PlaceCommand = {
+    command: CommandName.PLACE,
+    x: number,
+    y: number,
+    face: Face,
+}
+
+export type MoveCommand = {
+  command: CommandName.MOVE,
+}
+
+export type LeftCommand = {
+  command: CommandName.LEFT,
+}
+
+export type RightCommand = {
+  command: CommandName.RIGHT,
+}
+
+export type ReportCommand = {
+  command: CommandName.REPORT,
+}
+
+export type Command =
+  | PlaceCommand
+  | MoveCommand
+  | LeftCommand
+  | RightCommand
+  | ReportCommand
 
 export class RobotApp {
   private surface: Surface;
@@ -17,31 +47,22 @@ export class RobotApp {
     this.surface = surface;
   }
   public runCommand(
-    command: Command,
-    x?: number,
-    y?: number,
-    face?: Face
+    command: Command
   ): void {
-    switch (command) {
-      case Command.PLACE:
-        if (x === undefined || y === undefined || face === undefined) {
-          throw new Error(
-            "x, y and face must be provided when running place command"
-          );
-        } else {
-          this.robot = place(x, y, face, this.surface);
-        }
+    switch (command.command) {
+      case CommandName.PLACE:
+        this.robot = place(command.x, command.y, command.face, this.surface);
         break;
-      case Command.MOVE:
+      case CommandName.MOVE:
         this.robot = move(this.robot, this.surface);
         break;
-      case Command.LEFT:
+      case CommandName.LEFT:
         this.robot = left(this.robot);
         break;
-      case Command.RIGHT:
+      case CommandName.RIGHT:
         this.robot = right(this.robot);
         break;
-      case Command.REPORT:
+      case CommandName.REPORT:
         console.log(report(this.robot));
       default:
         break;
